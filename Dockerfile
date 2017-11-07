@@ -25,6 +25,9 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Install NPM globals.
 RUN npm install -g gulp
 
+# Install App Engine - Python
+RUN gcloud components install app-engine-python
+
 # Confirm versions that are installed.
 RUN node -v
 RUN gulp -v
