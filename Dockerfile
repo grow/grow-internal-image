@@ -19,7 +19,8 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
 # Install dependencies.
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
-python python-pip python-setuptools python-all-dev nodejs build-essential zip libc6 \
+python python-pip python-setuptools python-all-dev pylint \
+nodejs build-essential zip libc6 \
 libyaml-dev libffi-dev libxml2-dev libxslt-dev libssl-dev \
 git curl ssh google-cloud-sdk google-cloud-sdk-app-engine-python
 
