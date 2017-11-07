@@ -12,21 +12,22 @@ ENV TERM=xterm
 RUN apt-get install -y --no-install-recommends curl ca-certificates
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
-# Install Grow dependencies.
+# Install gcloud tool.
+RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+# Install dependencies.
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
 python python-pip python-setuptools python-all-dev nodejs build-essential zip libc6 \
 libyaml-dev libffi-dev libxml2-dev libxslt-dev libssl-dev \
-git curl ssh
+git curl ssh google-cloud-sdk google-cloud-sdk-app-engine-python
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install NPM globals.
 RUN npm install -g gulp
-
-# Install App Engine - Python
-RUN gcloud components install app-engine-python
 
 # Confirm versions that are installed.
 RUN node -v
