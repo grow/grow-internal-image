@@ -15,7 +15,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 # Install Grow dependencies.
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
-python python-pip python-setuptools python-all-dev zip libc6 \
+python python-pip python-setuptools python-all-dev nodejs build-essential zip libc6 \
 libyaml-dev libffi-dev libxml2-dev libxslt-dev libssl-dev \
 git curl ssh
 
