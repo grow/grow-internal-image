@@ -26,6 +26,12 @@ git curl ssh google-cloud-sdk google-cloud-sdk-app-engine-python
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Update pip
+RUN pip install --upgrade pip
+
+# Install Virtual Env
+RUN pip install virtualenv
+
 # Install NPM globals.
 RUN npm install -g gulp
 
