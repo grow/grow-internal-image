@@ -24,6 +24,9 @@ nodejs build-essential zip libc6 \
 libyaml-dev libffi-dev libxml2-dev libxslt-dev libssl-dev \
 git curl ssh google-cloud-sdk google-cloud-sdk-app-engine-python
 
+# Add gcloud to path.
+RUN PATH=$PATH:/usr/bin/
+
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -36,8 +39,6 @@ RUN pip install virtualenv
 # Install NPM globals.
 RUN npm install -g gulp
 
-# Init gcloud
-RUN gcloud init
 
 # Confirm versions that are installed.
 RUN node -v
