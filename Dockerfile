@@ -36,6 +36,10 @@ RUN pip install virtualenv
 # Install NPM globals.
 RUN npm install -g gulp
 
+# Init gcloud
+RUN gcloud init
+
 # Confirm versions that are installed.
 RUN node -v
 RUN gulp -v
+RUN gcloud -v
