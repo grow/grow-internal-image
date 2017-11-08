@@ -25,7 +25,7 @@ libyaml-dev libffi-dev libxml2-dev libxslt-dev libssl-dev \
 git curl ssh google-cloud-sdk google-cloud-sdk-app-engine-python
 
 # Add gcloud to path.
-ENV PATH="${PATH}:/usr/lib/google-cloud-sdk/platform/google_appengine"
+ENV PYTHONPATH="${PYTHONPATH}:/usr/lib/google-cloud-sdk/platform/google_appengine"
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
