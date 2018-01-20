@@ -1,4 +1,4 @@
-FROM ubuntu:zesty
+FROM ubuntu:xenial
 MAINTAINER Grow SDK Authors <hello@grow.io>
 
 # Update system.
@@ -45,6 +45,7 @@ RUN pip install --upgrade pip
 
 # Install Virtual Env
 RUN pip install virtualenv
+RUN pip install pipenv
 
 # Install NPM globals.
 RUN npm install -g gulp
@@ -58,3 +59,4 @@ RUN gulp -v
 RUN gcloud -v
 RUN go version
 RUN ghr --version
+RUN pipenv --version
