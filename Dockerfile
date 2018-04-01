@@ -1,5 +1,5 @@
 FROM ubuntu:xenial
-MAINTAINER Grow SDK Authors <hello@grow.io>
+MAINTAINER Grow Authors <hello@grow.io>
 
 # Update system.
 RUN apt-get update
@@ -23,11 +23,9 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
 # Install dependencies.
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
-python python-pip python-setuptools python-all-dev pylint \
-nodejs build-essential zip libc6 \
-libyaml-dev libffi-dev libxml2-dev libxslt-dev libssl-dev \
-git curl ssh google-cloud-sdk google-cloud-sdk-app-engine-python \
-golang-1.9-go
+python3.6 python3-pip python3-setuptools pylint nodejs build-essential zip libc6 libyaml-dev \
+libffi-dev libxml2-dev libxslt-dev libssl-dev git curl ssh google-cloud-sdk \
+google-cloud-sdk-app-engine-python golang-1.9-go
 
 # Add gcloud to path.
 ENV PYTHONPATH="${PYTHONPATH}:/usr/lib/google-cloud-sdk/platform/google_appengine"
@@ -36,9 +34,6 @@ ENV PYTHONPATH="${PYTHONPATH}:/usr/lib/google-cloud-sdk/platform/google_appengin
 ENV PATH=$PATH:/usr/lib/go-1.9/bin
 ENV GOPATH=$HOME/gocode
 ENV PATH=$PATH:$GOPATH/bin
-
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Update pip.
 RUN pip install --upgrade pip
@@ -53,10 +48,18 @@ RUN npm install -g gulp
 # Install github release uploader.
 RUN go get -u github.com/tcnksm/ghr
 
+# Clean up APT.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Clean up Temp files.
+rm -rf /tmp/* /var/tmp/*
+
 # Confirm versions that are installed.
+RUN python -v
+RUN pip --version
+RUN pipenv --version
 RUN node -v
 RUN gulp -v
 RUN gcloud -v
 RUN go version
 RUN ghr --version
-RUN pipenv --version
