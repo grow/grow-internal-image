@@ -52,7 +52,7 @@ RUN go get -u github.com/tcnksm/ghr
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Clean up Temp files.
-rm -rf /tmp/* /var/tmp/*
+RUN rm -rf /tmp/* /var/tmp/*
 
 # Confirm versions that are installed.
 RUN python -v
