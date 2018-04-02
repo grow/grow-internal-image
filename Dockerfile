@@ -9,6 +9,10 @@ RUN apt-get install -y --no-install-recommends software-properties-common
 # Set environment variables.
 ENV TERM=xterm
 
+# Set environment variables
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+
 # Node 8.
 RUN apt-get install -y --no-install-recommends curl ca-certificates
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
@@ -23,7 +27,7 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
 # Install dependencies.
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
-python3.6 python3-pip python3-setuptools pylint nodejs build-essential zip libc6 libyaml-dev \
+python3 python3-pip python3-setuptools pylint nodejs build-essential zip libc6 libyaml-dev \
 libffi-dev libxml2-dev libxslt-dev libssl-dev git curl ssh google-cloud-sdk \
 google-cloud-sdk-app-engine-python golang-1.9-go
 
@@ -36,11 +40,11 @@ ENV GOPATH=$HOME/gocode
 ENV PATH=$PATH:$GOPATH/bin
 
 # Update pip.
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 
 # Install Virtual Env
-RUN pip install virtualenv
-RUN pip install pipenv
+RUN pip3 install virtualenv
+RUN pip3 install pipenv
 
 # Install NPM globals.
 RUN npm install -g gulp
@@ -56,7 +60,7 @@ RUN rm -rf /tmp/* /var/tmp/*
 
 # Confirm versions that are installed.
 RUN python -v
-RUN pip --version
+RUN pip3 --version
 RUN pipenv --version
 RUN node -v
 RUN gulp -v
