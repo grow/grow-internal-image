@@ -18,8 +18,8 @@ RUN add-apt-repository ppa:gophers/archive
 
 # Install dependencies.
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends python3 python3-pip pylint \
-build-essential zip libc6 nodejs npm \
+RUN apt-get install -y --no-install-recommends python3 python3-pip python3-dev \
+pylint build-essential zip libc6 nodejs npm \
 libyaml-dev libffi-dev libxml2-dev libxslt-dev libssl-dev git ssh golang-1.9-go
 
 # Add go to path.
@@ -33,7 +33,6 @@ RUN pip3 install --upgrade pip
 # Install Virtual Env
 RUN pip3 install virtualenv
 RUN pip3 install pipenv
-
 
 # Install github release uploader.
 RUN go get -u github.com/tcnksm/ghr
