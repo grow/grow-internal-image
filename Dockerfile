@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:latest
 MAINTAINER Grow Authors <hello@grow.io>
 
 # Update system.
