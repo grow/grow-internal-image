@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Grow SDK Authors <hello@grow.io>
 
 # Update system.
