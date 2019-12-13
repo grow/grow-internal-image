@@ -10,8 +10,8 @@ RUN apt-get install -y --no-install-recommends software-properties-common
 ENV TERM=xterm
 
 # Node 8.
-RUN apt-get install -y --no-install-recommends curl ca-certificates
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y --no-install-recommends curl ca-certificates gpg-agent
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 # Golang.
 RUN add-apt-repository ppa:gophers/archive
