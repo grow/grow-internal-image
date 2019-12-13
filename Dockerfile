@@ -48,7 +48,7 @@ RUN pip install virtualenv
 RUN pip install pipenv
 
 # Install NPM globals.
-RUN npm install -g gulp
+RUN npm install -g gulp yarn
 
 # Install github release uploader.
 RUN go get -u github.com/tcnksm/ghr
