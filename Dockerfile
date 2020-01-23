@@ -15,20 +15,13 @@ RUN apt-get update \
     python3 python3-pip python3-setuptools python3-all-dev python3-dev \
     pylint build-essential zip libc6 libyaml-dev libffi-dev \
     libxml2-dev libxslt-dev libssl-dev git ssh \
+  && curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
+  && echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+  && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
   && add-apt-repository ppa:longsleep/golang-backports \
-  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# gcloud tool.
-RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
-  && echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-
-# Node.
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-
-# Install dependencies.
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-    google-cloud-sdk google-cloud-sdk-app-engine-python golang-go nodejs \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends golang-go google-cloud-sdk \
+    google-cloud-sdk-app-engine-python nodejs \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add to path.
