@@ -3,6 +3,8 @@ MAINTAINER Grow SDK Authors <hello@grow.io>
 
 # Set environment variables.
 ENV TERM=xterm
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
 # Update system.
 RUN apt-get update \
