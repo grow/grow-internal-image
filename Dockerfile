@@ -12,7 +12,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     software-properties-common curl ca-certificates gpg-agent \
     python python-pip python-setuptools python-all-dev \
-    python3 python3-pip python3-setuptools python3-all-dev \
+    python3 python3-pip python3-setuptools python3-all-dev python3-dev \
     pylint build-essential zip libc6 libyaml-dev libffi-dev \
     libxml2-dev libxslt-dev libssl-dev git ssh \
   && add-apt-repository ppa:longsleep/golang-backports \
