@@ -12,7 +12,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     software-properties-common curl ca-certificates gpg-agent \
     python python-pip python-setuptools python-all-dev python-dev \
-    python3 python3-pip python3-setuptools python3-all-dev python3-dev \
+    python3.8 python3.8-pip python3.8-setuptools python3.8-all-dev python3.8-dev \
     pylint build-essential zip libc6 libyaml-dev libffi-dev \
     libxml2-dev libxslt-dev libssl-dev git ssh \
   && curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
