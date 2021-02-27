@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 MAINTAINER Grow SDK Authors <hello@grow.io>
 
 # Set environment variables.
@@ -9,6 +9,7 @@ ENV LANG=C.UTF-8
 # Update system.
 RUN apt-get update \
   && apt-get upgrade -y \
+  && add-apt-repository ppa:deadsnakes/ppa \
   && apt-get install -y --no-install-recommends \
     software-properties-common curl ca-certificates gpg-agent \
     python python-pip python-setuptools python-all-dev python-dev \
