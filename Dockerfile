@@ -48,4 +48,5 @@ RUN echo "Node: `node -v`" \
   && echo "GCloud: `gcloud -v`" \
   && echo "Yarn: `yarn --version`" \
   && echo "Go: `go version`" \
-  && echo "GHR: `ghr --version`"
+  && echo "GHR: `ghr --version`" \
+  && echo "Python 3: `python3 --version`"
