@@ -9,13 +9,12 @@ ENV LANG=C.UTF-8
 # Update system.
 RUN apt-get update \
   && apt-get upgrade -y \
-  && add-apt-repository ppa:deadsnakes/ppa \
   && apt-get install -y --no-install-recommends \
     software-properties-common curl ca-certificates gpg-agent \
     python python-pip python-setuptools python-all-dev python-dev \
-    python3.8 python3.8-pip python3.8-setuptools python3.8-all-dev python3.8-dev \
     pylint build-essential zip libc6 libyaml-dev libffi-dev \
     libxml2-dev libxslt-dev libssl-dev git ssh \
+  && add-apt-repository ppa:deadsnakes/ppa \
   && curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
   && echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
   && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
@@ -23,6 +22,7 @@ RUN apt-get update \
   && apt-get update \
   && apt-get install -y --no-install-recommends golang-go google-cloud-sdk \
     google-cloud-sdk-app-engine-python nodejs \
+    python3.8 python3.8-pip python3.8-setuptools python3.8-all-dev python3.8-dev \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add to path.
