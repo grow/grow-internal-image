@@ -11,7 +11,6 @@ RUN apt-get update \
   && apt-get upgrade -y \
   && apt-get install -y --no-install-recommends \
     software-properties-common curl ca-certificates gpg-agent \
-    python python-pip python-setuptools python-all-dev python-dev \
     pylint build-essential zip libc6 libyaml-dev libffi-dev \
     libxml2-dev libxslt-dev libssl-dev git ssh \
   && add-apt-repository ppa:deadsnakes/ppa \
