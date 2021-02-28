@@ -5,6 +5,8 @@ MAINTAINER Grow SDK Authors <hello@grow.io>
 ENV TERM=xterm
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=US/Pacific
 
 # Update system.
 RUN apt-get update \
