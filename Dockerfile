@@ -1,4 +1,6 @@
-FROM ubuntu:focal
+# Cannot use focal since cloud sdk not released for it yet.
+# See: https://packages.cloud.google.com/apt/dists => cloud-sdk-*
+FROM ubuntu:bionic
 MAINTAINER Grow SDK Authors <hello@grow.io>
 
 # Set environment variables.
@@ -23,7 +25,8 @@ RUN apt-get update \
   && apt-get update \
   && apt-get install -y --no-install-recommends golang-go google-cloud-sdk \
     google-cloud-sdk-app-engine-python nodejs \
-    python3.8 python3.8-pip python3.8-setuptools python3.8-all-dev python3.8-dev \
+    python3.8 python3-pip python3-setuptools python3-all-dev python3-dev \
+  && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add to path.
@@ -33,8 +36,7 @@ ENV GOPATH=$HOME/gocode
 ENV PATH=$PATH:$GOPATH/bin
 
 # Update pip.
-RUN pip install --upgrade pip virtualenv pipenv \
-  && pip3 install --upgrade pip virtualenv pipenv
+RUN pip3 install --upgrade pip virtualenv pipenv
 
 # Install NPM globals.
 RUN npm install -g gulp yarn
@@ -51,4 +53,5 @@ RUN echo "Node: `node -v`" \
   && echo "Yarn: `yarn --version`" \
   && echo "Go: `go version`" \
   && echo "GHR: `ghr --version`" \
-  && echo "Python 3: `python3 --version`"
+  && echo "Python 3: `python3 --version`" \
+  && echo "Python 3: `pip3 --version`"
